@@ -1,22 +1,25 @@
-import { init as initScene } from './scene';
-import { init as initSphere } from './sphere';
-import { init as initPaths } from './paths';
+// import { init as initScene } from './scene';
+// import { init as initSphere } from './sphere';
+// import { init as initPaths } from './paths';
+// function initData() {
+//   let request = new XMLHttpRequest();
+//   request.open('GET', './data.json', true);
+//   request.onload = function () {
+//     // Convert JSON data to an object
+//     let places = JSON.parse(this.response);
+//     let data = [];
+//     for (var i = 0; i < places.length; i++) {
+//       data = places[i].lat, places[i].long, places[i].size;
+//       console.log(data);
+//     }
+//     return data;
+//     request.send();
+//   }
+// }
+// export default function initGlobe(container) {
+//     console.log(initData());
 
-export default function initGlobe(container) {
-  initScene(container);
-  initSphere();
-  initPaths([
-    [
-      37.77397, 
-      -122.43129, 
-      22.54554,
-      114.0683
-    ],
-    [
-      47.77397, 
-      -110.43129, 
-      22.54554,
-      114.0683
-    ]
-  ]);
-}
+//   initScene(container);
+//   initSphere();
+//   initPaths([initData()]);
+// }

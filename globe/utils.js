@@ -1,12 +1,9 @@
 import * as THREE from 'three';
 import { geoInterpolate } from 'd3-geo';
-import { GLOBE_RADIUS, CURVE_MIN_ALTITUDE, CURVE_MAX_ALTITUDE } from './constants';
+import { GLOBE_RADIUS, CURVE_MIN_ALTITUDE, CURVE_MAX_ALTITUDE, CURVE_COLOR } from './constants';
 
 const DEGREE_TO_RADIAN = Math.PI / 180;
 
-export function clamp(num, min, max) {
-  return num <= min ? min : (num >= max ? max : num);
-}
 
 export function coordinateToPosition(lat, lng, radius) {
   const phi = (90 - lat) * DEGREE_TO_RADIAN;
@@ -27,19 +24,12 @@ export function getSplineFromCoords(coords) {
 
   // spline vertices
   const start = coordinateToPosition(startLat, startLng, GLOBE_RADIUS);
-  const end = coordinateToPosition(endLat, endLng, GLOBE_RADIUS);
-  const altitude = clamp(start.distanceTo(end) * .75, CURVE_MIN_ALTITUDE, CURVE_MAX_ALTITUDE);
-  const interpolate = geoInterpolate([startLng, startLat], [endLng, endLat]);
-  const midCoord1 = interpolate(0.25);
-  const midCoord2 = interpolate(0.75);
-  const mid1 = coordinateToPosition(midCoord1[1], midCoord1[0], GLOBE_RADIUS + altitude);
-  const mid2 = coordinateToPosition(midCoord2[1], midCoord2[0], GLOBE_RADIUS + altitude);
+  const altitude = Math.floor(Math.random()*(CURVE_MAX_ALTITUDE - CURVE_MIN_ALTITUDE + 1)+ CURVE_MIN_ALTITUDE);
+  const end = coordinateToPosition(startLat, startLng, GLOBE_RADIUS + altitude);
 
   return {
     start,
     end,
-    spline: new THREE.CubicBezierCurve3(start, mid1, mid2, end)
+    spline: new THREE.LineCurve3(start, end)
   };
 }
-
-
