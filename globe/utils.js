@@ -24,7 +24,7 @@ export function coordinateToPosition(lat, lng, radius) {
 const altitude = Math.floor(Math.random() * (CURVE_MAX_ALTITUDE - CURVE_MIN_ALTITUDE + 1) + CURVE_MIN_ALTITUDE);
 
 export function init(allCoords) {
-  const CURVE_COLOR = (altitude < 30) ? 0xff9900 : 0x00ff37;
+  const CURVE_COLOR = (altitude < CURVE_MAX_ALTITUDE/2) ? 0xff9900 : 0x00ff37;
   const material = new THREE.MeshBasicMaterial({
     blending: THREE.AdditiveBlending,
     opacity: 1,

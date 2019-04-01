@@ -13,3 +13,19 @@ body {
   width: 100%;
   height: 100%;
 }
+.button {
+  position: relative;
+  margin: 30px 0 0 30px;
+  display: flex;
+  outline: none;
+  border: none;
+  -webkit-box-align: center;    align-items: center;
+  min-height: 30px;
+  line-height: 30px;
+  color: rgb(255, 255, 255);    font-size: 13px;
+  background-color: rgb(66, 136, 253);
+  padding: 0px 8px;
+  border-radius: 3px;
+  text-decoration: none;
+  transition: background-color 0.05s ease 0s; 
+}
