@@ -1,25 +1,28 @@
-// import { init as initScene } from './scene';
-// import { init as initSphere } from './sphere';
-// import { init as initPaths } from './paths';
-// function initData() {
-//   let request = new XMLHttpRequest();
-//   request.open('GET', './data.json', true);
-//   request.onload = function () {
-//     // Convert JSON data to an object
-//     let places = JSON.parse(this.response);
-//     let data = [];
-//     for (var i = 0; i < places.length; i++) {
-//       data = places[i].lat, places[i].long, places[i].size;
-//       console.log(data);
-//     }
-//     return data;
-//     request.send();
-//   }
-// }
-// export default function initGlobe(container) {
-//     console.log(initData());
+import { init as initScene } from './scene';
+import { init as initSphere } from './sphere';
+import { init as initPaths } from './utils';
+import axios from 'axios';
 
-//   initScene(container);
-//   initSphere();
-//   initPaths([initData()]);
-// }
+export default function initGlobe(container) {
+  initScene(container);
+  initSphere();
+  axios.get('https://ecomfe.github.io/echarts-examples/public/data/asset/data/flights.json')
+    .then(res => {
+      const routes = res.data.routes.slice(0, 10000);
+      const airports = res.data.airports;
+      const coords = routes.map(route => {
+        const startAirport = airports[route[1]];
+        const endAirport = airports[route[2]];
+        const startLat = startAirport[4];
+        const startLng = startAirport[3];
+        const endLat = startAirport[4];
+        const endLng = startAirport[3];
+        return [ startLat, startLng, endLat, endLng ];
+      });
+
+      initPaths(coords);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+}
