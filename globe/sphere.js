@@ -10,7 +10,7 @@ export function init() {
   const loader = new THREE.TextureLoader();
   const material = new THREE.MeshPhongMaterial({
     map: loader.load('https://i.imgur.com/b2vkfWP.jpg'),
-    color: COLOR_SPHERE_NIGHT
+    // color: COLOR_SPHERE_NIGHT
   });
   const mesh = new THREE.Mesh(geometry, material);
   

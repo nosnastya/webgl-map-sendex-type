@@ -19,7 +19,8 @@ body {
   display: flex;
   outline: none;
   border: none;
-  -webkit-box-align: center;    align-items: center;
+  -webkit-box-align: center;    
+  align-items: center;
   min-height: 30px;
   line-height: 30px;
   color: rgb(255, 255, 255);    font-size: 13px;
@@ -28,4 +29,15 @@ body {
   border-radius: 3px;
   text-decoration: none;
   transition: background-color 0.05s ease 0s; 
+}
+
+#info {
+  font-size: 11px;
+  position: absolute;
+  bottom: 5px;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(0,0,0,0.8);
+  border-radius: 3px;
+  right: 10px;
+  padding: 10px;
 }
