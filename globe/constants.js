@@ -7,5 +7,5 @@ export const PI_TWO = Math.PI * 2;
 export const PI_HALF = Math.PI / 2;
 
 export const CURVE_SEGMENTS = 32;
-export const CURVE_MIN_ALTITUDE = 20;
-export const CURVE_MAX_ALTITUDE = 70;
+export const CURVE_MIN_ALTITUDE = 1;
+export const CURVE_MAX_ALTITUDE = 20;

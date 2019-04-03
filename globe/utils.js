@@ -53,7 +53,7 @@ export function getSplineFromCoords(coords) {
   // spline vertices
   const start = coordinateToPosition(startLat, startLng, GLOBE_RADIUS);
 
-  const end = coordinateToPosition(startLat, startLng, GLOBE_RADIUS + altitude);
+  const end = coordinateToPosition(startLat, startLng, GLOBE_RADIUS + coords[3]);
 
   return {
     start,
